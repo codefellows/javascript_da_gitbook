@@ -1,4 +1,12 @@
 # Server Side Javascript With Node
+## 10,000ft view
+## Basic Dev Tools
+### NPM
+Npm is a package/module ecosystem for node.
+#### package.json
+Building basic package.json files and what they can be used for.
+### Grunt
+Grunt is a build tool, meaning it does all the same stuff that a Makefile would do.
 ## Testing
 ### Mocha/Chai
 How these two frameworks fit together and how to write effective tests.
