@@ -15,6 +15,7 @@ like who created the package, what license it uses and scripts to run everything
 from automated testing to starting a server.
 ## Grunt
 Grunt is going to be our primary build tool. It essentially describes all the
-tasks that we mgiht want to accomplish on a development machine. This could be
+tasks that we might want to accomplish on a development machine. This could be
 anything from running tests, to building a production version of our code, to
-seeding database. It's probably most comparable to a Makefile from c/c++.
+seeding database. It allows to take repetitive tasks that you frequently
+have to perform during development and turn them into single commands.

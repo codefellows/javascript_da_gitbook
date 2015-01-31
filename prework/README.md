@@ -96,5 +96,5 @@ for practice: http://overthewire.org/wargames/bandit/
 ![underpants gnome](http://stoneapeyow.files.wordpress.com/2013/06/underpants-gnome.jpg?w=290)
 
 ## Get into Slack and Canvas
-If you're enrolled in the class and you haven't received an email inviting you to canvas and
-slack, email your instructor.
+If you're enrolled in the class and you haven't received two email invitations, one for canvas and
+one for slack, email your instructor.
