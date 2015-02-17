@@ -21,9 +21,8 @@ How it differs from the Angular 2-way datbindings.
 What it is and what it do.
 ### Web Components
 JSX based web components using React.
-### Architecture
-Creating full client side apps using React. Not sure if this will cover Backbone
-and React, React/Flux or some other combo yet.
+### Flux 
+Creating full client side apps using React, using a Flux style architecture.
 ### Testing
 Effective testing using jasmine and the React mocking plugins.
 ## Auth/Auth
