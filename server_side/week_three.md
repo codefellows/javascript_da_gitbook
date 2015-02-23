@@ -12,6 +12,7 @@
 ### BasicHTTP using Passport
 ### Creating a token back after BasicHTTP Auth
 ### Using that Token to Authenticate
+### Basic Security Concerns
 # Assignment
 This assignment is essentially a precursor to your 4th week project. Create a single
 resource JSON REST API with a presistence layer and authentication. If you're feeling
