@@ -73,13 +73,13 @@ your editor of choice, even if you think you already have it down.
 There are plethora of options for learning Javascript online and a multitude of
 different directions to go within the language (boom, college words). To prepare for the course, focus
 your attention on the language fundamentals. I recommend two main resources
-1. Eloquent Javascript
+  1. *Eloquent Javascript*
 The author of this book has made it available in its entirety for free online: http://eloquentjavascript.net/.
 Get through the first ten chapters if you can but at the minimum tackle the first six
-2. Javascript the Good Parts
+  2. *Javascript the Good Parts*
 This is a must read book for any serious Javascript developer. Buy this book and read it twice,
 then read it once more. Seriously, there's a lot of info in here.
-3. You don't know JavaScript
+  3. *You don't know JavaScript*
 This contains a handful of in depth books about very specific Javascript subjects. The scopes & closures
 and this & object prototypes books are especially helpful. All of the books are available free 
 online in the form of a github repo or available through O'Reilly publishing in both ebook and
