@@ -79,6 +79,11 @@ Get through the first ten chapters if you can but at the minimum tackle the firs
 2. Javascript the Good Parts
 This is a must read book for any serious Javascript developer. Buy this book and read it twice,
 then read it once more. Seriously, there's a lot of info in here.
+3. You don't know JavaScript
+This contains a handful of in depth books about very specific Javascript subjects. The scopes & closures
+and this & object prototypes books are especially helpful. All of the books are available free 
+online in the form of a github repo or available through O'Reilly publishing in both ebook and
+print format. https://github.com/getify/You-Dont-Know-JS
 
 ### Git
 Make sure you know git, we have a git/unix workshop that will teach you everything
