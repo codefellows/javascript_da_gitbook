@@ -72,7 +72,7 @@ your editor of choice, even if you think you already have it down.
 ### Javascript
 There are plethora of options for learning Javascript online and a multitude of
 different directions to go within the language (boom, college words). To prepare for the course, focus
-your attention on the language fundamentals. I recommend two main resources
+your attention on the language fundamentals. I recommend three main resources
   1. *Eloquent Javascript*
 The author of this book has made it available in its entirety for free online: http://eloquentjavascript.net/.
 Get through the first ten chapters if you can but at the minimum tackle the first six
