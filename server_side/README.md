@@ -1,5 +1,4 @@
 # Server Side Javascript With Node
-## 10,000ft view
 ## Basic Dev Tools
 ### NPM
 Npm is a package/module ecosystem for node.
