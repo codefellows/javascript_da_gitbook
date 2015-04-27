@@ -37,7 +37,7 @@ global packages. You will need curl, python v2.x a C compiler(gcc or clang) and 
 ```
 curl -O http://nodejs.org/dist/v0.10.35/node-v0.10.35.tar.gz
 tar xvf node-v0.10.35.tar.gz
-cd node-v0.10.35.tar.gz
+cd node-v0.10.35
 ./configure --prefix=$HOME/.node
 make && make install
 ```
