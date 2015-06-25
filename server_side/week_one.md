@@ -1,5 +1,6 @@
 # Week One: Node Development Tools and Vanilla Node
 ## Day 1 
+[Screencap from D37](https://www.youtube.com/watch?v=raocBJXEsrc&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
 ### Modular Patterns in Node
 Node.js uses a version of the [Common.js modular pattern](http://wiki.commonjs.org/wiki/CommonJS) it adheres to most
 of the Common.js spec but deviates where it doesn't make sense in the context of Node. Node.js only has a handful of
@@ -58,6 +59,8 @@ contained within.
 access to hundreds of thousands of libraries built on top of Node. Every package you install with the command `npm install`
 gets saved to a `node_modules` directory created wherever the command is run. *Make sure to add this directory to your .gitignore*.
 ### Package.json
+[Screencap from D37](https://www.youtube.com/watch?v=dWly4ZcMwp0&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
+
 `package.json` is a file that contains all of the meta data relevant to your project or library in an npm context. This
 could be a list of dependencies, author information, version information, etc. Every package on npm and most of your 
 projects will contain one of these files. To be guided through the process run `npm init` from the root of your repo.
@@ -66,6 +69,8 @@ To add a dependency and install it use the command `npm install --save` to add d
 Dependencies should consist of only the minimum packages needed to run your server (in the case of web development) or your library.
 DevDependencies will be everything else, including packages needed for the build process and testing.
 ### Grunt
+[Screencap from D37](https://www.youtube.com/watch?v=42jIeCan7L8&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
+
 [Grunt](http://gruntjs.com/) is a build used to keep programmers consistent on the commands they are running from the command line
 as well as simplifying the commands needed to complete a task. To install grunt two pieces are needed, first the grunt command which
 can be obtained via the `grunt-cli` npm package using the command `npm install --save-dev grunt-cli`. Next, the `grunt` package provides
@@ -112,12 +117,16 @@ by an array of tasks you want to run when someone types that command. For instan
 run jshint then simplemocha. `'default'` is a special task name that runs when you just type `grunt` by itself.
 ## Day 3
 ### Buffers
+[Screencap from D37](https://www.youtube.com/watch?v=yMdGMOyKeWY&index=6&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
+
 [Buffers](https://nodejs.org/api/buffer.html) contain in memory binary data for Node.js. When you work with files in Node, you work with Buffers. To create a new
 buffer simply use the buffer constructor. `var myBuf = new Buffer()` you can pass strings into the Buffer constructor function
 that then get saved as binary data. The default encoded is utf-8. You can get then get strings of different encodings using the
 `toString` method. For instance to get a base64 encoding use `myBuf.toString('base64')`. Buffers can also be accessed liek an array using
 square brackets to get the hex values of a byte, more on this later.
 ### Event Emitters
+[Screencap from D37](https://www.youtube.com/watch?v=PlVMirtsHbU&index=7&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
+
 [EventEmitters](https://nodejs.org/api/events.html) are a way to do event based programming in Node.js. This covers not only a series
 of built-in events but custom events as well. Usuall the EventEmitter will be "inherited" into aother constructor. Here is the
 standard pattern for that:
@@ -141,6 +150,8 @@ the `.emit()` function.
 [Streams](https://nodejs.org/api/stream.html) are essentially combination of an event emitter and a buffer. Rather than trying
 to explain how they work I'm just going to point you to the great resource [The Stream Handbook](https://github.com/substack/stream-handbook).
 ### Manipulation of Binary Data
+[Screencap from D37](https://www.youtube.com/watch?v=miH9dLr2CaA&index=8&list=PLZshpIn7Zx07vD1qmuGPztQw4Eluye-Ah)
+
 Going to expand on this but essentially being able to use `readUInt16LE` and `readUInt32LE` in order to work with the [bitmap spec](https://en.wikipedia.org/wiki/BMP_file_format).
 ## Day 4
 ### Data Structures and Algorithms 1: Javascript Arrays and Objects

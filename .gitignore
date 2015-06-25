@@ -1,2 +1,4 @@
 _book
 **/*.sw?
+node_modules
+.node-version
