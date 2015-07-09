@@ -280,8 +280,3 @@ Submit a url with the final project, no need for a pull request.
 
 ## Day 4
 ### Data Structures and Algorithms 1: Javascript Arrays and Objects
-# Assignment
-For the first major assignment you will be creating a bitmap transformer. You program
-will read in a bitmap file into a buffer, run a color transform on that buffer and then
-write it out to disk. Your final repository should include testing, a Gruntfile and a
-package.json file.
