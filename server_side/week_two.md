@@ -11,7 +11,28 @@ Using a library like Q or Blackbird.
 Creating a promise like structure using Event Emitters and general async handling
 with events.
 #### Assignment
-Still need one
+For this assignment you'll need to demonstrate three different ways of 
+handling async code. First, using vanilla javascript. Write a modular function
+that takes a call back as an argument, then call an fs read and call that
+callback when when the read has succeeded after converting the buffer to an 
+all uppercase string string. Your final product should be able to be called 
+like this:
+```
+var myRead = require('myread');
+myRead('./filename.awesome', function(err, data) {
+  if (err) throw err;
+  console.log(data);
+});
+```
+Next, do the same thing using the q or blackbird promise library.
+Last, do the same thing using an event emitter.
+
+##### Rubric:
+  * callbacks: 3pts
+  * promise: 3pts
+  * EventEmitter: 4pts
+
+For a bonus point, write tests for each of these methods.
 
 ## Day 2
 The precursor to building HTTP servers, specifically REST APIs.
