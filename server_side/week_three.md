@@ -42,9 +42,62 @@ feature of Mongoose that we didn't use class, such as data validation.
 
 ## Day 3
 Time to start adding authentication.
-### BasicHTTP using Passport
-The basic http standard, passport as a middleware and how that middleware is generated.
-Also go over some basic encryption and why we don't store passwords.
+### Authentication vs Authorization
+Authentication: who you are
+Authorization: what you're allowed to do
+### User Creation and User Data Storage
+Don't store dem passwerds
+### BasicHTTP Using Passport
+The basic http standard, passport as a middleware and how that middleware is 
+generated. Also go over some basic encryption and why we don't store passwords.
+
+Passport uses what it calls "strategies" that are semi user defined, in order
+to create a middle ware that can placed on any route that needs Authentication.
+For instance, in our application we'll be using a BasicHTTP strategy in order
+to determine if a user is who they say they are. This strategy uses a base64 
+encoded string in the form of `'username:password'` that get sets in a request
+header. The header would look something like this:
+```
+headers: {
+  'Authorization': 'Basic base64 encoded string'
+};
+```
+Note that this header is named 'Authorization' but it's actually used primarily for
+Authentication. This data should always be sent over an HTTPS connection, 
+otherwise it's trivial for an attacker to get your plain text password out of
+the request. You can read more about the BasicHTTP standard in [rfc 2617](https://tools.ietf.org/html/rfc2617)
+
+What the passport Strategy provides is a way to read and verify this header.
+Passport also provides methods for workign with OAuth, Digest, and a variety of
+other industry standard Authentication methods. Which is why we're using it, 
+instead of just creating our own middleware. Once passport has pulled the data
+out of the header it needs to know what to do with it. In the definition of the
+strategy you have to determine what needs to be done with the username/password
+that has been received. There are three different ways that the authentication
+process can fail (four if you count database failure), if the Authentication 
+hasn't failed, it has succeded and we can move on to the next piece of middleware. 
+The three different failure are:
+  1.  An invalid Authorization header or no header (passport takes care of this
+for use)
+  2.  There is no user corresponding to the username
+  3.  The password does not match the one in the database
+
+Passport strategies take the form a function passed into a new Strategy object.
+This function will contain a series of parameters based on the type of authentication
+used. In our case, it will be a username and a password. If it was OAuth, it would
+be an OAuth token. All strategies will have a last parameter of `done` or `next`
+that will be a callback passed to your strategy by passport. This is a Node style
+callback. So, if you call with just a single parameter, that parameter becomes
+an error. If you call it with the first param equal to `null` the second parameter
+becomes the object that passport will set to req.user for subsequent pieces of
+middleware. For example:
+```
+done('no such user'); //sends back a 401
+done(null, someUser); //sets req.user to the someUser var and calls next();
+```
+You can read more about setting up the passport Basic strategy in their
+[docs](http://passportjs.org/docs/basic-digest)
+
 ### Creating a token and sending it back after BasicHTTP Auth
 Authenticate with basic http, generate a token and use that token for subsequent
 requests. Not only confirms came from our server but can easily be expired.
