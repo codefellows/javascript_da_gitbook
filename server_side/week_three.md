@@ -43,10 +43,10 @@ feature of Mongoose that we didn't use class, such as data validation.
 ## Day 3
 Time to start adding authentication.
 ### BasicHTTP using Passport
-The basic http standard, passport as a middle and how that middleware is generated.
+The basic http standard, passport as a middleware and how that middleware is generated.
 Also go over some basic encryption and why we don't store passwords.
-### Creating a token back after BasicHTTP Auth
-Authenticate with basic http, generate a toke and use that token for subsequent
+### Creating a token and sending it back after BasicHTTP Auth
+Authenticate with basic http, generate a token and use that token for subsequent
 requests. Not only confirms came from our server but can easily be expired.
 ### Using that Token to Authenticate
 Sending the token back and the creation of the eat_auth middleware. Pulling the
