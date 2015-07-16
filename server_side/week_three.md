@@ -46,7 +46,81 @@ Time to start adding authentication.
 Authentication: who you are
 Authorization: what you're allowed to do
 ### User Creation and User Data Storage
-Don't store dem passwerds
+Don't store dem p4zzw3rdzzzzz
+#### Storage Concerns
+Security is difficult. It takes only a cursory at tech headlines to realize
+that even the leaders in the tech sector have difficulty keeping their data
+secure. The easiest way to keep your users personal information from getting
+into the hands of those with less than good intentions is to not store it. This
+is pretty impractical to create a modern web application, so the next best is
+to make it so that it's impossible to read, ever. Third best is save non only
+non important data. We're going to be use a combination of all of these to
+keep track of our users and their authentication credentials. 
+##### Hashing
+Hashing is a way of creating encoded pieces of text that can never be decoded by
+running it through a "hashing" algorithm. This differs from encyption which can 
+be both encoded and decoded. Hashing has been used for a long time, primarily to 
+store passwords. It has also been used more recently for creating 
+"crypto currencies" and in git to create unique references to reference specific 
+commits or branches. We are only going to store hashed passwords inside of our 
+database. When a user attempts to authenticate we will hash the incoming 
+password using the same algorithm and compare the result with the stored hashed
+password.
+##### Salting
+The process of salting involves inject random or pseudorandom data into a hash.
+This prevents ["rainbow table"](https://en.wikipedia.org/wiki/Rainbow_table)
+based attacks. Which are essentially a large database of hashes for an alorithm
+and the input that was used to generate those hashes. Using salt means that your
+hashed passwords are unique to your server, even if a potential attacker gets a
+dump of your user data, they won't be able to recover plain text passwords.
+This may not matter to your website(since they managed to get a data dump) but 
+it will keep that attacker from being able to use the same credentials on another
+site. The easiest way to attack a website is through its users.
+##### Bcrypt
+[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) is a hashing algorithm that uses 
+the [blowfish cypher](https://en.wikipedia.org/wiki/Blowfish_cipher). The process
+is complex but it essentially uses the data you're encrypting as a key to encrypt
+it with. So you can technically decrypt it but only if you already know the data
+that is contained within the hash. At which point, there's no point in decrypting
+it. 
+#### Setting up the mongoose model
+To be able to store user data we need to create a user model. It should contain
+places for us to store the username and password in our database. This going to
+placed in a sub object contained within the model. It should look something
+like this:
+```
+var userSchema = mongoose.Schema({
+  basic: {
+    username: String,
+    password: String
+  }
+});
+```
+#### Why a subobject
+The resoning for a subobject is for security. While there is no way to 'unhash'
+a password we still don't want to give away our auth information. This could
+potentially allow a user to build a rainbow against our site by creating new
+accounts with various passwords and GETing the user object with the resulting
+hash. Having a subobject makes it easier to delete it out of the model before
+ `res.send`ing it anywhere.
+#### Adding methods to a Mongoose schema
+Mongose schemas make it easy to add a method to our model. Essentially each
+schema contains a `.methods` object that has key/value pairs where the value
+is a function that can be called on the model. Inside those functions `this` will
+refer to the model data. ex:
+```
+var someSchema = new mongoose.Schema({
+  someVal: String
+});
+someSchema.methods.printSomeVal = function() {
+  console.log('someVal is equal to ' + this.someVal);
+};
+module.exports = mongoose.model('someModel', someSchema);
+```
+We can then console.log the someVal with the added text by calling `printSomeVal()`
+on an instance of the someModel model.
+#### Using the bcrypt module
+
 ### BasicHTTP Using Passport
 The basic http standard, passport as a middleware and how that middleware is 
 generated. Also go over some basic encryption and why we don't store passwords.
