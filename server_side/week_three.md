@@ -120,7 +120,44 @@ module.exports = mongoose.model('someModel', someSchema);
 We can then console.log the someVal with the added text by calling `printSomeVal()`
 on an instance of the someModel model.
 #### Using the bcrypt module
+The bcrypt module is fairly easy to use. Like most of the built in modules in 
+node the majority of the functions have async and sync versions. We'll be adding
+methods to our User model. One to generate the initial hash and one to compare
+an incoming password with the hash saved on disk. 
+Hashing:
+```
+var bcrypt = require('brcypt'); //node.bcrypt.js
 
+userSchema.methods.generateHash = function(password, callback) {
+  bcrypt.hash(password, 8, function(err, hash) {
+    if (err) return callback(err);
+    callback(null, hash); 
+  });
+};
+```
+The 8 in the hash call signifies how man iterations of salt this hashing 
+function will generate. The amount of time it takes to hash your password
+grows considerably when the number is increased. 8 miliseconds for the hashing
+function is considered "safe" as per [this stack overflow response](http://security.stackexchange.com/a/3993)
+but that might be overkill or not enough for your particular application. There
+is always a tradeoff in security between convenience and how secure a system is.
+So it's something you'll have to play with. Make sure not to save the model
+before the generateHash's callback function has been called.
+
+The other method that needs to be written is the compare function. This takes
+a password and compares it to the on stored on the model.
+
+```
+userSchema.methods.compareHash = function(password, callback) {
+  bcrypt.compare(password, this.basic.password, function(err, res){
+    if (err) return callback(err);
+    callback(null, res); //res can be false
+  });
+};
+```
+An important detail to remember is that a password that does not match the
+one in the database is not an error. It will simple have a res equal to false,
+so you must remember to check for that case in your callback function.
 ### BasicHTTP Using Passport
 The basic http standard, passport as a middleware and how that middleware is 
 generated. Also go over some basic encryption and why we don't store passwords.
@@ -178,8 +215,6 @@ requests. Not only confirms came from our server but can easily be expired.
 ### Using that Token to Authenticate
 Sending the token back and the creation of the eat_auth middleware. Pulling the
 token from the body or the header depending on which exists.
-### Basic Security Concerns
-HTTPS, the intarwebs and what data should be sent back to the user, also logging.
 # Assignment
 This assignment is essentially a precursor to your 4th week project. Create a single
 resource JSON REST API with a presistence layer and authentication. If you're feeling
